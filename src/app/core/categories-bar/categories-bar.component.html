@@ -1,0 +1,13 @@
+<nav>
+  <ul class="categories container">
+    @for (category of categories; track category.slug) {
+    <li class="categories__item">
+      <a
+        routerLink="/categories/{{ category.slug }}"
+        class="categories__item__link"
+        >{{ category.name }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>
