@@ -1,0 +1,21 @@
+@import "variables";
+
+.breadcrumb {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+
+  &__divider {
+    color: $grey-color-400;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  &__item {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 500;
+    color: $grey-color-700;
+  }
+}
