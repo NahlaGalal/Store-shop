@@ -1,0 +1,45 @@
+<nav class="container navbar">
+  <!-- Logo -->
+  <a>
+    <img src="/assets/logo.svg" alt="Logo" class="navbar__logo" />
+  </a>
+
+  <!-- Search input -->
+  <div class="navbar__search">
+    <ng-icon
+      name="bootstrapSearch"
+      class="navbar__search__icon"
+      size="12"
+      strokeWidth="2"
+      color="#98A2B3"
+    />
+    <input
+      type="search"
+      name="search"
+      id="search"
+      placeholder="search for product"
+      class="navbar__search__input"
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- Buttons -->
+  <div class="navbar__btns">
+    <!-- Wishlist -->
+    <button class="navbar__btns__btn navbar__btns__btn--wishlist">
+      <ng-icon
+        name="bootstrapBookmark"
+        size="22"
+        strokeWidth="2"
+        color="#fff"
+      />
+      Wishlist
+    </button>
+
+    <!-- Cart -->
+    <button class="navbar__btns__btn navbar__btns__btn--cart">
+      <ng-icon name="bootstrapCart" size="22" strokeWidth="2" color="#fff" />
+      Cart
+    </button>
+  </div>
+</nav>
