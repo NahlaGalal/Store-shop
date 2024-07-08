@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CategoriesService } from '../categories.service';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-categories-bar',
@@ -9,21 +11,13 @@ import { RouterLink } from '@angular/router';
   styleUrl: './categories-bar.component.scss',
 })
 export class CategoriesBarComponent {
-  categories = [
-    {
-      slug: 'beauty',
-      name: 'Beauty',
-      url: 'https://dummyjson.com/products/category/beauty',
-    },
-    {
-      slug: 'fragrances',
-      name: 'Fragrances',
-      url: 'https://dummyjson.com/products/category/fragrances',
-    },
-    {
-      slug: 'furniture',
-      name: 'Furniture',
-      url: 'https://dummyjson.com/products/category/furniture',
-    },
-  ];
+  categories: Category[] = [];
+  private categoriesService = inject(CategoriesService);
+
+  ngOnInit(): void {
+    this.categoriesService.getCategories().subscribe({
+      next: (data) => (this.categories = data.slice(0, 10)),
+      error: (err) => console.log(err),
+    });
+  }
 }
