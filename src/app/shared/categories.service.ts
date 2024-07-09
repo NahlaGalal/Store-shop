@@ -10,8 +10,6 @@ export class CategoriesService {
   private http = inject(HttpClient);
 
   getCategories(): Observable<Category[]> {
-    console.log('hello');
-    
     return this.http.get<Category[]>('https://dummyjson.com/products/categories');    
   }
 }
