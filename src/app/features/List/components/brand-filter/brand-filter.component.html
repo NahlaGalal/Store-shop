@@ -1,0 +1,18 @@
+<div class="brand-filter">
+  <h2 class="brand-filter__heading">Brand</h2>
+
+  <ul class="brand-filter__list">
+    @for (brand of brands; track brand.name) {
+    <li class="brand-filter__list__item">
+      <label for="{{ brand.name }}" class="brand-filter__list__item__label">
+        <input type="checkbox" id="{{ brand.name }}" name="brand" hidden />
+        <span class="brand-filter__list__item__label__input"></span>
+        {{ brand.name }}
+        <span class="brand-filter__list__item__label__num">{{
+          brand.productsNum
+        }}</span>
+      </label>
+    </li>
+    }
+  </ul>
+</div>

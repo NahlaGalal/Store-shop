@@ -1,0 +1,65 @@
+@import "variables";
+
+.brand-filter {
+  margin: 2rem 0; // 32px 0
+
+  &__heading {
+    font-size: 1rem; // 16px
+    line-height: 1.25rem; // 20px
+    font-weight: 700;
+    color: $grey-color-900;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: 1.25rem; // 20px
+
+    &__item {
+      &__label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1rem; // 16px
+        line-height: 2.75rem; // 44px
+        font-weight: 600;
+        color: $grey-color-800;
+
+        &__input {
+          position: relative;
+          width: 1rem; // 16px
+          height: 1rem; // 16px
+          border: 1px solid $grey-color-400;
+          border-radius: 0.25rem; // 4px
+          transition: all 0.3s ease-in-out;
+
+          &::after {
+            position: absolute;
+            left: 1px;
+            line-height: 1rem; // 16px
+          }
+        }
+
+        input:checked + &__input {
+          border-color: $blue-color-300;
+          background-color: $blue-color-100;
+
+          &::after {
+            content: "\2713";
+          }
+        }
+
+        &__num {
+          margin-inline-start: auto;
+          padding: 0.125rem 0.5rem; // 2px 8px
+          border-radius: 1rem; // 16px
+          border: 1px solid $grey-color-300;
+          background-color: $grey-color-100;
+          font-size: 0.75rem; // 12px
+          line-height: 1.125rem; // 18px
+          font-weight: 500;
+          color: $grey-color-800;
+        }
+      }
+    }
+  }
+}

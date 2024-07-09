@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { CategoryFilterComponent } from '../category-filter/category-filter.component';
+import { BrandFilterComponent } from '../brand-filter/brand-filter.component';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [CategoryFilterComponent],
+  imports: [CategoryFilterComponent, BrandFilterComponent],
   templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss'
+  styleUrl: './filter.component.scss',
 })
-export class FilterComponent {
-
-}
+export class FilterComponent {}
