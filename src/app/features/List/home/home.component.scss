@@ -9,8 +9,11 @@
 
   &__main {
     flex: 1;
-    display: grid;
-    gap: 1.5rem; // 24px
-    grid-template-columns: repeat(5, 1fr);
+
+    &__content {
+      display: grid;
+      gap: 1.5rem; // 24px
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
 }

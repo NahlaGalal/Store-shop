@@ -1,0 +1,50 @@
+<footer>
+  <ul class="pagination">
+    <li>
+      <button
+        class="pagination__item"
+        type="button"
+        (click)="onChangePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        <ng-icon
+          name="bootstrapArrowLeftShort"
+          size="20"
+          color="#344054"
+          strokeWidth="2"
+        />
+        Previous
+      </button>
+    </li>
+    @for (page of pages; track page) {
+    <li>
+      <button
+        class="pagination__item {{
+          currentPage === page && 'pagination__item--active'
+        }}"
+        type="button"
+        (click)="onChangePage(page)"
+        [disabled]="currentPage === page"
+      >
+        {{ page }}
+      </button>
+    </li>
+    }
+    <li>
+      <button
+        class="pagination__item pagination__item--next"
+        type="button"
+        (click)="onChangePage(currentPage + 1)"
+        [disabled]="currentPage === pages.length"
+      >
+        Next
+        <ng-icon
+          name="bootstrapArrowRightShort"
+          size="20"
+          color="#344054"
+          strokeWidth="2"
+        />
+      </button>
+    </li>
+  </ul>
+</footer>
