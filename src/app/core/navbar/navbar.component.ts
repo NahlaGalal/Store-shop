@@ -7,11 +7,12 @@ import {
 } from '@ng-icons/bootstrap-icons';
 import { CartDropDownComponent } from '../cart-drop-down/cart-drop-down.component';
 import { CartService } from '@/app/shared/cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgIconComponent, CartDropDownComponent],
+  imports: [NgIconComponent, CartDropDownComponent, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   viewProviders: [

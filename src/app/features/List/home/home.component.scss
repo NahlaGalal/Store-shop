@@ -1,0 +1,16 @@
+.layout {
+  display: flex;
+  gap: 4.375rem; // 70px
+  margin-top: 2rem; // 32px
+
+  &__aside {
+    width: 18.375rem; // 294px
+  }
+
+  &__main {
+    flex: 1;
+    display: grid;
+    gap: 1.5rem; // 24px
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

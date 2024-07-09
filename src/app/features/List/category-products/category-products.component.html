@@ -6,10 +6,8 @@
   </aside>
 
   <main class="layout__main">
-    <app-product-card />
-    <app-product-card />
-    <app-product-card />
-    <app-product-card />
-    <app-product-card />
+    @for (product of products; track product.id) {
+    <app-product-card [product]="product" />
+    }
   </main>
 </div>

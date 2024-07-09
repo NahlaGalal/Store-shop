@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Product } from '@/app/shared/product';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { bootstrapStarFill } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -11,4 +12,6 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
   styleUrl: './product-card.component.scss',
   viewProviders: [provideIcons({ bootstrapStarFill })],
 })
-export class ProductCardComponent {}
+export class ProductCardComponent {
+  @Input() product!: Product;
+}

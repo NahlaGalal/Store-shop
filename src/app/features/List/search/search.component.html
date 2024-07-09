@@ -1,1 +1,11 @@
-<p>search works!</p>
+<div class="layout container">
+  <aside class="layout__aside">
+    <app-filter />
+  </aside>
+
+  <main class="layout__main">
+    @for (product of products; track product.id) {
+    <app-product-card [product]="product" />
+    }
+  </main>
+</div>
