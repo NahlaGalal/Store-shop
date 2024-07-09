@@ -1,0 +1,32 @@
+@import "variables";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; // 20px
+
+  &__section {
+    border-radius: 0.25rem; // 4px
+    border: 1px solid $grey-color-300;
+    padding: 2.5rem; // 40px
+
+    &:first-of-type {
+      margin-top: 3.5rem; // 56px
+    }
+
+    &__title {
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 700;
+      color: $grey-color-800;
+      margin-bottom: 1.25rem; // 20px
+    }
+    
+    &__text {
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 400;
+      color: $grey-color-500;
+    }
+  }
+}
