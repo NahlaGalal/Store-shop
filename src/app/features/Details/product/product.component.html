@@ -5,12 +5,14 @@
   <app-product-info [product]="product" />
 
   <!-- Overview -->
+  @if (product?.description) {
   <section class="product__section">
     <h2 class="product__section__title">Overview</h2>
     <p class="product__section__text">
-      {{ product?.description }}
+      {{ product!.description }}
     </p>
   </section>
+  }
 
   <!-- Highlights -->
   <section class="product__section">
