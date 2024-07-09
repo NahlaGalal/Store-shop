@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '@/app/core/navbar/navbar.component';
 import { CategoriesBarComponent } from '@/app/core/categories-bar/categories-bar.component';
 import { LoadingComponent } from '@/app/core/loading/loading.component';
+import { CartService } from './shared/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -17,5 +18,11 @@ import { LoadingComponent } from '@/app/core/loading/loading.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'convertedin-task';
+  private cartService = inject(CartService);
+
+  ngAfterViewInit() {
+    document.addEventListener('click', () => {
+      this.cartService.toggleCartDropDown(false);
+    });
+  }
 }

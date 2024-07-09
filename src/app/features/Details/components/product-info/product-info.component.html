@@ -73,25 +73,27 @@
     <div class="info__content__row">
       <!-- Quantity input -->
       <label for="qty" class="info__content__row__qty">
-        QTY
-        <select name="qty" id="qty">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <!-- <input
-          type="number"
-          placeholder="1"
-          id="qty"
+        <span class="info__content__row__qty__label"> QTY </span>
+        <select
           name="qty"
+          id="qty"
           class="info__content__row__qty__input"
-        /> -->
+          [formControl]="quantityInput"
+        >
+          @for (option of qunatityOptions; track option) {
+          <option value="{{ option }}">{{ option }}</option>
+          }
+        </select>
       </label>
 
       <!-- Add to cart button -->
-      <button class="info__content__row__cart">Add To Cart</button>
+      <button
+        class="info__content__row__cart"
+        type="button"
+        (click)="addToCart($event)"
+      >
+        Add To Cart
+      </button>
     </div>
   </div>
 

@@ -30,7 +30,8 @@ export class NavbarComponent {
     });
   }
 
-  toggleCartDropDown(): void {
+  toggleCartDropDown(event: Event): void {
+    event.stopPropagation();
     this.cartService.toggleCartDropDown(!this.isCartDropDownVisible);
   }
 }

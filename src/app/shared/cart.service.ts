@@ -35,5 +35,11 @@ export class CartService {
         totalPrice: item.price * quantity,
       });
     }
+
+    this.toggleCartDropDown(true);
+
+    setTimeout(() => {
+      this.toggleCartDropDown(false);
+    }, 3000);
   }
 }

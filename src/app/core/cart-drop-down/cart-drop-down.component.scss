@@ -40,18 +40,33 @@
         color: $grey-color-800;
       }
 
-      &__price {
-        font-size: 1rem; // 16px
-        line-height: 1.25rem; // 20px
-        font-weight: 700;
-        color: $grey-color-900;
-        margin: 0.25rem 0; // 4px 0
+      &__row {
+        display: flex;
+        gap: 0.5rem; // 8px
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
 
-        &__currency {
-          font-size: 0.75rem; // 12px
+        &__qty {
+          font-size: 1rem; // 16px
           line-height: 1.25rem; // 20px
-          font-weight: 500;
-          color: $grey-color-500;
+          font-weight: 700;
+          color: $grey-color-600;
+        }
+
+        &__price {
+          font-size: 1rem; // 16px
+          line-height: 1.25rem; // 20px
+          font-weight: 700;
+          color: $grey-color-900;
+          margin: 0.25rem 0; // 4px 0
+  
+          &__currency {
+            font-size: 0.75rem; // 12px
+            line-height: 1.25rem; // 20px
+            font-weight: 500;
+            color: $grey-color-500;
+          }
         }
       }
     }

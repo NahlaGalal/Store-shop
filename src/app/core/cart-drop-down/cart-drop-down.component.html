@@ -13,10 +13,16 @@
       <div>
         <p class="cart__list__item__title">{{ item.product.title }}</p>
 
-        <p class="cart__list__item__price">
-          <span class="cart__list__item__price__currency">EGP</span>
-          {{ item.product.price }}
-        </p>
+        <div class="cart__list__item__row">
+          <!-- Quantity -->
+          <p class="cart__list__item__row__qty">QTY: {{ item.quantity }}</p>
+
+          <!-- Price -->
+          <p class="cart__list__item__row__price">
+            <span class="cart__list__item__row__price__currency">EGP</span>
+            {{ item.product.price }}
+          </p>
+        </div>
       </div>
     </li>
     }
