@@ -1,0 +1,38 @@
+@import "variables";
+
+.category-filter {
+  &__heading {
+    font-size: 1rem; // 16px
+    line-height: 1.25rem; // 20px
+    font-weight: 700;
+    color: $grey-color-900;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: 1.25rem; // 20px
+    border-inline-start: 1px solid $grey-color-300;
+
+    &__item {
+      &__btn {
+        background-color: transparent;
+        font-size: 1rem; // 16px
+        line-height: 2.75rem; // 44px
+        font-weight: 400;
+        color: $grey-color-800;
+        padding: 0 0.875rem; // 14px
+        width: 100%;
+        text-align: start;
+        cursor: pointer;
+
+        &--active {
+          font-weight: 600;
+        }
+
+        &:hover {
+          background-color: $grey-color-300;
+        }
+      }
+    }
+  }
+}

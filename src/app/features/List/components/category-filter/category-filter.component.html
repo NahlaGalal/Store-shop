@@ -1,0 +1,13 @@
+<div class="category-filter">
+  <h2 class="category-filter__heading">Category</h2>
+
+  <ul class="category-filter__list">
+    @for (category of categories; track category.slug) {
+    <li class="category-filter__list__item">
+      <button class="category-filter__list__item__btn">
+        {{ category.name }}
+      </button>
+    </li>
+    }
+  </ul>
+</div>

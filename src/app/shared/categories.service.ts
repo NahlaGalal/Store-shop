@@ -10,6 +10,8 @@ export class CategoriesService {
   private http = inject(HttpClient);
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>('https://dummyjson.com/products/categories?limit=10');    
+    console.log('hello');
+    
+    return this.http.get<Category[]>('https://dummyjson.com/products/categories');    
   }
 }

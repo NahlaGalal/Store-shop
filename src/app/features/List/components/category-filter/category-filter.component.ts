@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { CategoriesService } from '@/app/shared/categories.service';
 import { Category } from '@/app/shared/category';
+import { CategoriesService } from '@/app/shared/categories.service';
 
 @Component({
-  selector: 'app-categories-bar',
+  selector: 'app-category-filter',
   standalone: true,
-  imports: [RouterLink],
-  templateUrl: './categories-bar.component.html',
-  styleUrl: './categories-bar.component.scss',
+  imports: [],
+  templateUrl: './category-filter.component.html',
+  styleUrl: './category-filter.component.scss',
 })
-export class CategoriesBarComponent {
+export class CategoryFilterComponent {
   categories: Category[] = [];
   private categoriesService = inject(CategoriesService);
 
