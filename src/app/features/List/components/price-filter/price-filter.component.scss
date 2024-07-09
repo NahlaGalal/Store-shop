@@ -1,0 +1,39 @@
+@import "variables";
+
+.price-filter {
+  &__heading {
+    font-size: 1rem; // 16px
+    line-height: 1.25rem; // 20px
+    font-weight: 700;
+    color: $grey-color-900;
+  }
+
+  &__range {
+    display: flex;
+    gap: 0.75rem; // 12px
+    margin-top: 1.25rem; // 20px
+    align-items: center;
+
+    &__label {
+      font-size: 1rem; // 16px
+      line-height: 1.25rem; // 20px
+      font-weight: 600;
+      color: $grey-color-500;
+    } 
+
+    &__input {
+      width: 5.5rem; // 88px
+      height: 2.5rem; // 40px
+      box-sizing: border-box;
+      background-color: #fff;
+      border-radius: 0.5rem; // 8px
+      padding: 0.5rem 0.75rem; // 8px 12px
+      border: 1px solid $grey-color-400;
+      box-shadow: 0px 1px 2px 0px #1018280D;
+      font-size: 1rem; // 16px
+      line-height: 1.5rem; // 24px
+      font-weight: 400;
+      color: $grey-color-600;
+    }
+  }
+}
