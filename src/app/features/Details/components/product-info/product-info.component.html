@@ -1,35 +1,84 @@
 <section class="info">
+  @if (product) {
   <!-- Images -->
   <div class="info__images">
     <div class="info__images__list">
-      <button class="info__images__list__btn">
+      @for (image of product.images; track image) {
+      <button
+        class="info__images__list__btn"
+        (click)="setThumbnail(image)"
+        type="button"
+        title="Set this image as thumbnail"
+      >
         <img
-          src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
-          alt="Image 1"
+          src="{{ image }}"
+          alt="{{ product.title }} image"
           class="info__images__list__btn__img"
         />
       </button>
-
-      <button class="info__images__list__btn">
+      }
+      <button
+        class="info__images__list__btn"
+        (click)="
+          setThumbnail(
+            'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png'
+          )
+        "
+      >
         <img
           src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
-          alt="Image 1"
+          alt="{{ product.title }} image"
           class="info__images__list__btn__img"
         />
       </button>
-
-      <button class="info__images__list__btn">
+      <button
+        class="info__images__list__btn"
+        (click)="
+          setThumbnail(
+            'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png'
+          )
+        "
+      >
+        <img
+          src="https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png"
+          alt="{{ product.title }} image"
+          class="info__images__list__btn__img"
+        />
+      </button>
+      <button
+        class="info__images__list__btn"
+        (click)="
+          setThumbnail(
+            'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png'
+          )
+        "
+      >
         <img
           src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
-          alt="Image 1"
+          alt="{{ product.title }} image"
+          class="info__images__list__btn__img"
+        />
+      </button>
+      <button
+        class="info__images__list__btn"
+        (click)="
+          setThumbnail(
+            'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png'
+          )
+        "
+      >
+        <img
+          src="https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png"
+          alt="{{ product.title }} image"
           class="info__images__list__btn__img"
         />
       </button>
     </div>
 
     <img
-      src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
+      src="{{ thumbnailUrl }}"
       class="info__images__current"
+      alt="{{ product.title }} thumbnail"
     />
   </div>
 
@@ -37,24 +86,24 @@
   <div class="info__content">
     <!-- Title -->
     <h1 class="info__content__title">
-      PlayStation 5 Console (Disc Version) With Controller
+      {{ product.title }}
     </h1>
 
     <!-- Description -->
-    <p class="info__content__desc">
-      Model Number : CFI-1208A / CFI-1216A 01Y/CFI-1200A / CFI-1218A / CFI-1016A
-      / CFI-1116A
-    </p>
+    <p class="info__content__desc">Model Number : {{ product.sku }}</p>
 
     <!-- Rate -->
     <p class="info__content__rate">
-      <ng-icon name="bootstrapStarFill" color="#FAC515" /> 4.5
-      <span class="info__content__rate__num">(434)</span>
+      <ng-icon name="bootstrapStarFill" color="#FAC515" /> {{ product.rating }}
+      <span class="info__content__rate__num"
+        >({{ product.reviews.length }})</span
+      >
     </p>
 
     <!-- Price -->
     <p class="info__content__price">
-      <span class="info__content__price__currency">EGP</span> 11,590
+      <span class="info__content__price__currency">EGP</span>
+      {{ product.price }}
     </p>
 
     <!-- Delivery -->
@@ -147,4 +196,5 @@
       <p class="info__options__item__desc">Your data is always protected</p>
     </li>
   </ul>
+  }
 </section>

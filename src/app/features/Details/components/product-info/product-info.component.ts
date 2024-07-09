@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Product } from '@/app/shared/product';
+import { Component, Input } from '@angular/core';
 import { bootstrapStarFill } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 
@@ -10,4 +11,23 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
   styleUrl: './product-info.component.scss',
   viewProviders: [provideIcons({ bootstrapStarFill })],
 })
-export class ProductInfoComponent {}
+export class ProductInfoComponent {
+  @Input() product: Product | undefined;
+  thumbnailUrl: string = '';
+
+  ngOnInit() {
+    if (this.product) {
+      this.setThumbnail(this.product.thumbnail);
+    }
+  }
+  
+  ngOnChanges() {
+    if (this.product) {
+      this.setThumbnail(this.product.thumbnail);
+    }
+  }
+
+  setThumbnail(url: string): void {
+    this.thumbnailUrl = url;
+  }
+}

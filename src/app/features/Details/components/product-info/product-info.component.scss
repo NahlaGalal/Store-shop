@@ -13,7 +13,12 @@
     &__list {
       display: flex;
       flex-direction: column;
-      gap: 1rem; // 16px
+      max-height: 30rem; // 480px
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       &__btn {
         background-color: transparent;
@@ -85,13 +90,13 @@
     &__delivery {
       border-radius: 0.25rem; // 4px
       padding: 0.5rem; // 8px
-      box-shadow: 0px 0px 32px 0px #0000000D;
+      box-shadow: 0px 0px 32px 0px #0000000d;
       width: 50%;
       font-size: 0.625rem; // 10px
       line-height: 0.75rem; // 12px
       font-weight: 500;
       color: $grey-color-600;
-      
+
       &__time {
         display: block;
         margin-top: 0.25rem; // 4px
@@ -99,9 +104,9 @@
         color: $grey-color-900;
       }
     }
-    
+
     &__installment {
-      margin-top: 0.75rem; // 12px 
+      margin-top: 0.75rem; // 12px
       background-color: $yellow-color;
       border-radius: 0.25rem; // 4px
       padding: 1rem; // 16px
