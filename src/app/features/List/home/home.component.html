@@ -1,6 +1,6 @@
 <div class="layout container">
   <aside class="layout__aside">
-    <app-filter />
+    <app-filter [products]="products" />
   </aside>
 
   <div class="layout__main">
@@ -12,6 +12,9 @@
       }
     </main>
 
-    <app-pagination [total]="total" (onChangePageHandler)="onChangePageHandler($event)" />
+    <app-pagination
+      [total]="total"
+      (onChangePageHandler)="onChangePageHandler($event)"
+    />
   </div>
 </div>

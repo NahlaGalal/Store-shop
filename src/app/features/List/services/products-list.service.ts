@@ -1,4 +1,4 @@
-import { Product } from '@/app/shared/product';
+import { ProductListItem } from '@/app/shared/product-list-item';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ export class ProductsListService {
     category?: string;
     skip?: number;
   }): Observable<{
-    products: Product[];
+    products: ProductListItem[];
     limit: number;
     skip: number;
     total: number;
@@ -28,14 +28,14 @@ export class ProductsListService {
       : search
       ? '/products/search'
       : '/products';
-    let queryString: string = `select=title,description,category,price,rating,stock,sku,reviews,images,thumbnail&limit=20&skip=${skip}`;
+    let queryString: string = `select=title,brand,price,rating,reviews,thumbnail&limit=20&skip=${skip}`;
 
     if (search) {
       queryString += `&q=${search}`;
     }
 
     return this.http.get<{
-      products: Product[];
+      products: ProductListItem[];
       limit: number;
       skip: number;
       total: number;

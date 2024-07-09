@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-brand-filter',
@@ -8,38 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './brand-filter.component.scss',
 })
 export class BrandFilterComponent {
-  brands = [
-    {
-      name: 'Samsung',
-      productsNum: 12,
-    },
-    {
-      name: 'Sony',
-      productsNum: 11,
-    },
-    {
-      name: 'Xiaom',
-      productsNum: 11,
-    },
-    {
-      name: 'Apple',
-      productsNum: 9,
-    },
-    {
-      name: 'Canon',
-      productsNum: 5,
-    },
-    {
-      name: 'HUAWEI',
-      productsNum: 4,
-    },
-    {
-      name: 'HP',
-      productsNum: 3,
-    },
-    {
-      name: 'Lenovo',
-      productsNum: 3,
-    },
-  ];
+  @Input() brands: {name: string, productsNum: number}[] = [];
 }

@@ -2,12 +2,19 @@
 
 <div class="layout container">
   <aside class="layout__aside">
-    <app-filter />
+    <app-filter [products]="products" />
   </aside>
 
-  <main class="layout__main">
-    @for (product of products; track product.id) {
-    <app-product-card [product]="product" />
-    }
-  </main>
+  <div class="layout__main">
+    <main class="layout__main__content">
+      @for (product of products; track product.id) {
+      <app-product-card [product]="product" />
+      }
+    </main>
+
+    <app-pagination
+      [total]="total"
+      (onChangePageHandler)="onChangePageHandler($event)"
+    />
+  </div>
 </div>
