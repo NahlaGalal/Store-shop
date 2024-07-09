@@ -1,0 +1,73 @@
+// Range slider input custom styles
+
+.ngx-slider {
+  // Slider
+  margin-top: 3rem !important; // 48px
+
+  .ngx-slider-span {
+    // The whole bar area
+    &.ngx-slider-bar {
+      height: 0.5rem; // 8px
+      background-color: $grey-color-300;
+      border-radius: 0.25rem; // 4px
+
+      // Selected bar area
+      &.ngx-slider-selection {
+        background-color: $blue-color-300;
+      }
+    }
+
+    // Circles to indicate the range
+    &.ngx-slider-pointer {
+      width: 1.5rem; // 24px
+      height: 1.5rem; // 24px
+      border-radius: 50%;
+      background-color: #fff;
+      border: 1px solid $blue-color-300;
+      top: -0.625rem; // -10px
+      outline: none;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    // Limits label (1 star, 5 stars)
+    &.ngx-slider-limit {
+      font-size: 1rem; // 16px
+      line-height: 1.25rem; // 20px
+      font-weight: 400;
+      color: $grey-color-500 !important;
+      bottom: -2rem; // -32px
+
+      &::after {
+        content: " Star";
+      }
+      
+      &.ngx-slider-ceil {
+        left: calc(100% - 3.75rem) !important; // calc(100% - 60px)
+        
+        &::after {
+          content: " Stars";
+        }
+      }
+    }
+
+    // Number indicators of current range
+    &.ngx-slider-model-value,
+    &.ngx-slider-model-high,
+    &.ngx-slider-combined {
+      width: 1.5rem; // 24px
+      height: 1.5rem; // 24px
+      border-radius: 50%;
+      background-color: $blue-color-100;
+      border: 1px solid $blue-color-200;
+      padding: 0;
+      font-size: 0.75rem; // 12px
+      line-height: 1.5rem; // 24px
+      font-weight: 500;
+      color: $blue-color-400;
+      text-align: center;
+    }
+  }
+}
