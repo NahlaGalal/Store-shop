@@ -1,0 +1,35 @@
+@import "variables";
+
+.error {
+  margin-top: 5rem; // 80px
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; // 16px
+
+  &__subheading {
+    font-size: 3rem; // 48px
+    font-weight: 700;
+    text-align: center;
+    color: $grey-color-800;
+  }
+
+  &__heading {
+    font-size: 5rem; // 80px
+    color: $blue-color-400;
+    font-weight: 700;
+  }
+
+  &__link {
+    flex: 1;
+    border-radius: 0.25rem; // 4px
+    background-color: $blue-color-400;
+    padding: 1rem; // 16px
+    font-size: 1rem; // 16px
+    line-height: 1.25rem; // 20px
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+  }
+}
