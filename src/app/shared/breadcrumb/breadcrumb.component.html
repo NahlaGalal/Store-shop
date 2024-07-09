@@ -1,7 +1,7 @@
 <div class="breadcrumb container">
   <ng-icon name="bootstrapHouse" color="#667085" size="17" strokeWidth="2" />
+  @for (item of items; track item) {
   <span class="breadcrumb__divider">/</span>
-  <p class="breadcrumb__item">Electronics & Mobiles</p>
-  <span class="breadcrumb__divider">/</span>
-  <p class="breadcrumb__item">Sony PlayStation 5 DigitalEdition Console With Controller</p>
+  <p class="breadcrumb__item">{{ item }}</p>
+  }
 </div>

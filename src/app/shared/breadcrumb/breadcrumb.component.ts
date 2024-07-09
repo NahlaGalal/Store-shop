@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { bootstrapHouse } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 
@@ -10,4 +10,6 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
   styleUrl: './breadcrumb.component.scss',
   viewProviders: [provideIcons({ bootstrapHouse })],
 })
-export class BreadcrumbComponent {}
+export class BreadcrumbComponent {
+  @Input() items: string[] = [];
+}

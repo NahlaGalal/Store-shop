@@ -15,6 +15,7 @@ import { LoadingService } from '@/app/core/loading.service';
 })
 export class ProductComponent {
   product: Product | undefined;
+  breadCrumbItems: string[] = [];
   private productService = inject(ProductService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -26,7 +27,10 @@ export class ProductComponent {
     this.loading.loadingOn();
 
     this.productService.getProductDetails(id).subscribe({
-      next: (data) => (this.product = data),
+      next: (data) => {
+        this.product = data;
+        this.breadCrumbItems = [this.product.category, this.product.title];
+      },
       error: (err) => {
         this.loading.loadingOff();
 
