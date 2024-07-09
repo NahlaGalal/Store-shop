@@ -1,0 +1,28 @@
+<div class="cart">
+  @if (cartItems.items.length) {
+  <!-- Cart items -->
+  <ul class="cart__list">
+    @for (item of cartItems.items; track item.product.id) {
+    <li class="cart__list__item">
+      <img
+        src="{{ item.product.thumbnail }}"
+        alt="{{ item.product.title }} thumbnail"
+        class="cart__list__item__image"
+      />
+
+      <div>
+        <p class="cart__list__item__title">{{ item.product.title }}</p>
+
+        <p class="cart__list__item__price">
+          <span class="cart__list__item__price__currency">EGP</span>
+          {{ item.product.price }}
+        </p>
+      </div>
+    </li>
+    }
+  </ul>
+  } @else {
+  <!-- Empty cart -->
+  <p class="cart__empty">No products in the cart</p>
+  }
+</div>

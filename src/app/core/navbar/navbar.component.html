@@ -26,7 +26,7 @@
   <!-- Buttons -->
   <div class="navbar__btns">
     <!-- Wishlist -->
-    <button class="navbar__btns__btn navbar__btns__btn--wishlist">
+    <button class="navbar__btns__btn navbar__btns__btn--wishlist" type="button">
       <ng-icon
         name="bootstrapBookmark"
         size="22"
@@ -37,9 +37,17 @@
     </button>
 
     <!-- Cart -->
-    <button class="navbar__btns__btn navbar__btns__btn--cart">
+    <button
+      type="button"
+      class="navbar__btns__btn navbar__btns__btn--cart"
+      (click)="toggleCartDropDown()"
+    >
       <ng-icon name="bootstrapCart" size="22" strokeWidth="2" color="#fff" />
       Cart
     </button>
   </div>
+
+  @if (isCartDropDownVisible) {
+  <app-cart-drop-down class="navbar__dropdown" />
+  }
 </nav>

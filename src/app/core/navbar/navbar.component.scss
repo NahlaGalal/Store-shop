@@ -7,6 +7,7 @@
   gap: 1rem;
   align-items: center;
   background-color: $blue-color-400;
+  position: relative;
 
   &__logo {
     width: 102px;
@@ -32,7 +33,7 @@
       font-size: 11px;
       line-height: 13.3px;
       color: $grey-color-500;
-      
+
       &::placeholder {
         color: $grey-color-500;
       }
@@ -56,5 +57,12 @@
       font-weight: 500;
       cursor: pointer;
     }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% - 1rem); // 100% - 16px
+    right: 3rem; // 48px
+    z-index: 3;
   }
 }
