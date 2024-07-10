@@ -1,3 +1,5 @@
+@import "mixins";
+
 .layout {
   display: flex;
   gap: 4.375rem; // 70px
@@ -24,15 +26,13 @@
     }
 
     &__close {
+      @include fz16(700, $grey-color-800);
       position: absolute;
       top: 2rem; // 32px
       right: 2rem; // 32px
       width: 2.5rem; // 40px
       height: 2.5rem; // 40px
-      font-size: 1rem; // 16px
-      font-weight: 700;
       background: transparent;
-      color: $grey-color-800;
       cursor: pointer;
 
       @media screen and (min-width: #{$screen-lg-min + 1}) {
@@ -46,11 +46,8 @@
     max-width: 100%;
 
     &__btn {
+      @include fz16(600, $grey-color-900);
       padding: 0.5rem 1rem; // 8px 16px
-      color: #101828;
-      font-size: 1rem; // 16px
-      line-height: 1.25rem; // 20px
-      font-weight: 600;
       background-color: transparent;
       border: 1px solid $grey-color-900;
       margin-bottom: 1rem; // 16px
@@ -62,11 +59,8 @@
     }
 
     &__results {
+      @include fz16(400, $grey-color-500);
       margin-bottom: 2.5rem; // 40px
-      font-size: 1rem; // 16px
-      line-height: 1.25rem; // 20px
-      font-weight: 400;
-      color: $grey-color-500;
 
       &__category {
         font-weight: 700;
@@ -92,10 +86,7 @@
       }
 
       &__empty {
-        font-size: 1rem; // 16px
-        line-height: 1.25rem; // 20px
-        font-weight: 500;
-        color: $red-color;
+        @include fz16(500, $red-color);
         text-align: center;
         grid-column: 1/6;
       }

@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .pagination {
   display: flex;
@@ -10,13 +11,10 @@
   max-width: 100%;
 
   &__item {
+    @include fz14(600, $grey-color-800);
     display: flex;
     gap: 0.5rem;
     padding: 0.675rem 1rem; // 10px 16px
-    font-size: 14px;
-    line-height: 1.25rem; // 20px
-    font-weight: 600;
-    color: $grey-color-800;
     background-color: transparent;
     border: 1px solid $grey-color-400;
     cursor: pointer;

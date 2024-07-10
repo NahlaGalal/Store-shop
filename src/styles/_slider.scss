@@ -34,19 +34,16 @@
 
     // Limits label (1 star, 5 stars)
     &.ngx-slider-limit {
-      font-size: 1rem; // 16px
-      line-height: 1.25rem; // 20px
-      font-weight: 400;
-      color: $grey-color-500 !important;
+      @include fz16(400, $grey-color-500 !important);
       bottom: -2rem; // -32px
 
       &::after {
         content: " Star";
       }
-      
+
       &.ngx-slider-ceil {
         left: calc(100% - 3.75rem) !important; // calc(100% - 60px)
-        
+
         &::after {
           content: " Stars";
         }
@@ -57,16 +54,14 @@
     &.ngx-slider-model-value,
     &.ngx-slider-model-high,
     &.ngx-slider-combined {
+      @include fz12(500, $blue-color-400);
       width: 1.5rem; // 24px
       height: 1.5rem; // 24px
       border-radius: 50%;
       background-color: $blue-color-100;
       border: 1px solid $blue-color-200;
       padding: 0;
-      font-size: 0.75rem; // 12px
       line-height: 1.5rem; // 24px
-      font-weight: 500;
-      color: $blue-color-400;
       text-align: center;
     }
   }

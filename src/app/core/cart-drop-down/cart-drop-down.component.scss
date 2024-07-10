@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .cart {
   width: 19rem; // 304px
@@ -9,10 +10,7 @@
   background-color: #fff;
 
   &__empty {
-    font-size: 1rem; // 16px
-    line-height: 1.25rem; // 24px
-    font-weight: 500;
-    color: $red-color;
+    @include fz16(500, $red-color);
     text-align: center;
   }
 
@@ -34,10 +32,7 @@
       }
 
       &__title {
-        font-size: 1rem; // 16px
-        line-height: 1.25rem; // 24px
-        font-weight: 500;
-        color: $grey-color-800;
+        @include fz16(500, $grey-color-800);
       }
 
       &__row {
@@ -48,24 +43,15 @@
         justify-content: space-between;
 
         &__qty {
-          font-size: 1rem; // 16px
-          line-height: 1.25rem; // 20px
-          font-weight: 700;
-          color: $grey-color-600;
+          @include fz16(700, $grey-color-600);
         }
 
         &__price {
-          font-size: 1rem; // 16px
-          line-height: 1.25rem; // 20px
-          font-weight: 700;
-          color: $grey-color-900;
+          @include fz16(700, $grey-color-900);
           margin: 0.25rem 0; // 4px 0
   
           &__currency {
-            font-size: 0.75rem; // 12px
-            line-height: 1.25rem; // 20px
-            font-weight: 500;
-            color: $grey-color-500;
+            @include fz12(500, $grey-color-500);
           }
         }
       }

@@ -16,9 +16,9 @@
   }
 
   &__search {
+    @include fz12(400, $grey-color-500);
     position: relative;
     flex: 1;
-    font-size: 0.75rem; // 12px
 
     @media screen and (max-width: $screen-sm-max) {
       order: 1;
@@ -33,14 +33,13 @@
     }
 
     &__input {
+      @include fz12(400, $grey-color-500);
       width: 100%;
       padding: 0.625rem 1rem 0.625rem 2.25rem; // 10px 16px 10px 36px
       border-radius: 0.25rem; // 4px
       border: 0;
       outline: none;
-      font-size: 0.75rem; // 12px
       line-height: 14px;
-      color: $grey-color-500;
 
       &::placeholder {
         color: $grey-color-500;
@@ -57,15 +56,12 @@
     }
 
     &__btn {
+      @include fz14(500, #fff);
       background-color: transparent;
       border: 0;
-      color: #fff;
       display: flex;
       align-items: center;
-      gap: 0.5rem; // 8p
-      font-size: 14px;
-      line-height: 1rem; // 16px
-      font-weight: 500;
+      gap: 0.5rem; // 8px
       cursor: pointer;
     }
   }

@@ -1,12 +1,10 @@
 @import "variables";
+@import "mixins";
 
 .rate-filter {
   margin: 2rem 0; // 32px 0
 
   &__heading {
-    font-size: 1rem; // 16px
-    line-height: 1.25rem; // 20px
-    font-weight: 700;
-    color: $grey-color-900;
+    @include fz16(700, $grey-color-900);
   }
 }

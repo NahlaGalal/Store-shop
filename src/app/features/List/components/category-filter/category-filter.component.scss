@@ -1,11 +1,9 @@
 @import "variables";
+@import "mixins";
 
 .category-filter {
   &__heading {
-    font-size: 1rem; // 16px
-    line-height: 1.25rem; // 20px
-    font-weight: 700;
-    color: $grey-color-900;
+    @include fz16(700, $grey-color-900);
   }
 
   &__list {
@@ -19,12 +17,10 @@
       }
 
       &__label {
+        @include fz16(400, $grey-color-800);
         display: block;
         background-color: transparent;
-        font-size: 1rem; // 16px
         line-height: 2.75rem; // 44px
-        font-weight: 400;
-        color: $grey-color-800;
         padding: 0 0.875rem; // 14px
         width: 100%;
         text-align: start;

@@ -1,11 +1,9 @@
 @import "variables";
+@import "mixins";
 
 .price-filter {
   &__heading {
-    font-size: 1rem; // 16px
-    line-height: 1.25rem; // 20px
-    font-weight: 700;
-    color: $grey-color-900;
+    @include fz16(700, $grey-color-900);
   }
 
   &__range {
@@ -15,13 +13,11 @@
     align-items: center;
 
     &__label {
-      font-size: 1rem; // 16px
-      line-height: 1.25rem; // 20px
-      font-weight: 600;
-      color: $grey-color-500;
+      @include fz16(600, $grey-color-500);
     }
 
     &__input {
+      @include fz16(400, $grey-color-600);
       width: 5.5rem; // 88px
       height: 2.5rem; // 40px
       box-sizing: border-box;
@@ -30,10 +26,6 @@
       padding: 0.5rem 0.75rem; // 8px 12px
       border: 1px solid $grey-color-400;
       box-shadow: 0px 1px 2px 0px #1018280d;
-      font-size: 1rem; // 16px
-      line-height: 1.5rem; // 24px
-      font-weight: 400;
-      color: $grey-color-600;
       appearance: textfield;
       /* Firefox */
       -moz-appearance: textfield;

@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .product {
   display: block;
@@ -16,10 +17,7 @@
     padding: 1rem;
 
     &__name {
-      font-size: 12px;
-      line-height: 17px;
-      font-weight: 500;
-      color: $grey-color-800;
+      @include fz12(500, $grey-color-800);
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -37,27 +35,23 @@
       margin-top: 0.625rem; // 10px
 
       &__price {
-        font-size: 13px;
+        @include fz12(700, $grey-color-900);
         line-height: 13px;
-        font-weight: 700;
-        color: $grey-color-900;
 
         &__currency {
-          font-size: 10px;
-          line-height: 13px;
-          font-weight: 500;
-          color: $grey-color-500;
+          @include fz10(500, $grey-color-500);
         }
       }
 
       &__rate {
+        @include fz12(
+          500,
+          $grey-color-500
+        ); // It's 8px in design but it's too small so I increase it
         border: 1px solid $grey-color-300;
         border-radius: 0.75rem; // 12px
         padding: 0.125rem 0.375rem; // 2px 6px
-        font-size: 12px; // It's 8px in design but it's too small so I increase it
         line-height: 13px;
-        font-weight: 500;
-        color: $grey-color-500;
 
         &__num {
           color: $grey-color-400;

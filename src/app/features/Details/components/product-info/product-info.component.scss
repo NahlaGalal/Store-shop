@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .info {
   display: flex;
@@ -39,7 +40,7 @@
         }
       }
     }
-    
+
     &__current {
       width: 28.25rem; // 452px
       height: 28.75rem; // 460px
@@ -62,22 +63,16 @@
     }
 
     &__desc {
-      font-size: 0.75rem; // 12px
-      line-height: 1rem; // 16px
-      font-weight: 500;
-      color: $grey-color-500;
+      @include fz12(500, $grey-color-500);
       margin: 1rem 0; // 16px 0
     }
 
     &__rate {
+      @include fz10(500, $grey-color-500);
       width: max-content;
       border: 1px solid $grey-color-300;
       border-radius: 0.75rem; // 12px
       padding: 0.25rem 0.375rem; // 4px 6px
-      font-size: 0.625rem; // 10px
-      line-height: 1rem; // 16px
-      font-weight: 500;
-      color: $grey-color-500;
 
       &__num {
         color: $grey-color-400;
@@ -93,22 +88,16 @@
       margin-bottom: 1.5rem; // 24px
 
       &__currency {
-        font-size: 0.75rem; // 12px
-        line-height: 1.25rem; // 20px
-        font-weight: 500;
-        color: $grey-color-500;
+        @include fz12(500, $grey-color-500);
       }
     }
 
     &__delivery {
+      @include fz10(500, $grey-color-600);
       border-radius: 0.25rem; // 4px
       padding: 0.5rem; // 8px
       box-shadow: 0px 0px 32px 0px #0000000d;
       width: 50%;
-      font-size: 0.625rem; // 10px
-      line-height: 0.75rem; // 12px
-      font-weight: 500;
-      color: $grey-color-600;
 
       &__time {
         display: block;
@@ -119,15 +108,12 @@
     }
 
     &__installment {
+      @include fz10(500, $grey-color-600);
       margin-top: 0.75rem; // 12px
       background-color: $yellow-color;
       border-radius: 0.25rem; // 4px
       padding: 1rem; // 16px
       width: 75%;
-      font-size: 0.625rem; // 10px
-      line-height: 0.75rem; // 12px
-      font-weight: 500;
-      color: $grey-color-600;
 
       &__link {
         font-weight: 700;
@@ -144,8 +130,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem; // 8px
-      
+
       &__qty {
+        @include fz14(500, $grey-color-500);
         position: relative;
         display: flex;
         align-items: center;
@@ -154,16 +141,12 @@
         background-color: $grey-color-300;
         border-radius: 0.25rem; // 4px
         padding: 0.5rem 0.75rem; // 8px 12px
-        font-size: 14px;
-        line-height: 1rem; // 16px
-        font-weight: 500;
-        color: $grey-color-500;
         box-sizing: border-box;
-        
+
         &__label {
           z-index: 3;
         }
-        
+
         &__input {
           position: absolute;
           width: 100%;
@@ -178,15 +161,12 @@
       }
 
       &__cart {
+        @include fz16(500, #fff);
         flex: 1;
         min-width: 12rem; // 192px
         border-radius: 0.25rem; // 4px
         background-color: $blue-color-400;
         padding: 1rem; // 16px
-        font-size: 1rem; // 16px
-        line-height: 1.25rem; // 20px
-        font-weight: 500;
-        color: #fff;
         cursor: pointer;
       }
     }
@@ -210,18 +190,12 @@
       }
 
       &__title {
-        font-size: 0.75rem; // 12px
-        line-height: 1rem; // 16px
-        font-weight: 600;
-        color: $grey-color-800;
+        @include fz12(600, $grey-color-800);
         text-transform: uppercase;
       }
 
       &__desc {
-        font-size: 14px;
-        line-height: 1.25rem; // 20px
-        font-weight: 400;
-        color: $grey-color-600;
+        @include fz12(400, $grey-color-600);
       }
     }
   }
