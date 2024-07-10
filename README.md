@@ -38,7 +38,7 @@ You can find the app in [Live website](https://store-shop-gamma.vercel.app/)
    ```
 4. Open the project in `http://localhost:4200`
 
-## Techologies used
+## Technologies
 
 - Angular
 - NGRX store
@@ -47,16 +47,16 @@ You can find the app in [Live website](https://store-shop-gamma.vercel.app/)
 ## Screenshots
 
 - Home page
-![alt text](image-1.png)
+![Home page screenshot](https://github.com/NahlaGalal/Store-shop/assets/33041250/ba0b8dd7-ab6c-4490-943f-1d8630493799)
 
 - Home page with filters
-![alt text](image-2.png)
+![Home page using filters screenshot](https://github.com/NahlaGalal/Store-shop/assets/33041250/1f13a9aa-f1fe-45de-ab34-a32be70edf02)
 
 - Category page
-![alt text](image-3.png)
+![Category page screenshot](https://github.com/NahlaGalal/Store-shop/assets/33041250/3f2d9fc7-5c14-4897-b99c-be7643dfadf0)
 
 - Search page
-![alt text](image-4.png)
+![Search page screenshot](https://github.com/NahlaGalal/Store-shop/assets/33041250/5d35d6b0-3467-475d-a319-869e3031f425)
 
 - Product details page
-![alt text](image-5.png)
+![Product page screenshot](https://github.com/NahlaGalal/Store-shop/assets/33041250/91b6b4ab-b073-4219-b45e-093a55adbbe6)
