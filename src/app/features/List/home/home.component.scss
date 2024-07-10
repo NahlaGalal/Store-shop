@@ -1,3 +1,5 @@
+@import "variables";
+
 .layout {
   display: flex;
   gap: 4.375rem; // 70px
@@ -14,6 +16,15 @@
       display: grid;
       gap: 1.5rem; // 24px
       grid-template-columns: repeat(5, 1fr);
+
+      &__empty {
+        font-size: 1rem; // 16px
+        line-height: 1.25rem; // 20px
+        font-weight: 500;
+        color: $red-color;
+        text-align: center;
+        grid-column: 1/6;
+      }
     }
   }
 }
