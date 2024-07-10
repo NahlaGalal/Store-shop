@@ -1,11 +1,11 @@
 <div class="layout container">
   <aside class="layout__aside">
-    <app-filter [products]="products" />
+    <app-filter [products]="products" (onApplyFilters)="onApplyFilters($event)" />
   </aside>
 
   <div class="layout__main">
     <main class="layout__main__content">
-      @for (product of products; track product.id) {
+      @for (product of filteredProducts; track product.id) {
       <section>
         <app-product-card [product]="product" />
       </section>

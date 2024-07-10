@@ -28,7 +28,7 @@ export class ProductsListService {
       : search
       ? '/products/search'
       : '/products';
-    let queryString: string = `select=title,brand,price,rating,reviews,thumbnail&limit=20&skip=${skip}`;
+    let queryString: string = `select=title,brand,category,price,rating,reviews,thumbnail&limit=20&skip=${skip}`;
 
     if (search) {
       queryString += `&q=${search}`;

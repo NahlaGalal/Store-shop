@@ -24,19 +24,21 @@ export class PriceFilterComponent {
   onChangeMinPrice(event: Event) {
     const value = +(event.currentTarget as HTMLInputElement).value;
 
+    // Check that min price can't be larger than max price
     if (value >= this.maxPrice) {
       (event.currentTarget as HTMLInputElement).value = `${this.maxPrice - 1}`;
       this.minPrice = this.maxPrice - 1;
     } else {
       this.minPrice = value;
     }
-
+    
     this.onChangePriceEmit.emit({ min: this.minPrice, max: this.maxPrice });
   }
-
+  
   onChangeMaxPrice(event: Event) {
     const value = +(event.currentTarget as HTMLInputElement).value;
-
+    
+    // Check that max price can't be lower than min price
     if (value <= this.minPrice) {
       (event.currentTarget as HTMLInputElement).value = `${this.minPrice + 1}`;
       this.maxPrice = this.minPrice + 1;

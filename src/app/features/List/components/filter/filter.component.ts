@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { CategoryFilterComponent } from '../category-filter/category-filter.component';
 import { BrandFilterComponent } from '../brand-filter/brand-filter.component';
 import { PriceFilterComponent } from '../price-filter/price-filter.component';
 import { RateFilterComponent } from '../rate-filter/rate-filter.component';
 import { ProductListItem } from '@/app/shared/product-list-item';
+import { SelectedFilter } from '@/app/shared/selected-filter';
 
 @Component({
   selector: 'app-filter',
@@ -19,17 +20,10 @@ import { ProductListItem } from '@/app/shared/product-list-item';
 })
 export class FilterComponent {
   @Input() products: ProductListItem[] = [];
+  onApplyFilters = output<SelectedFilter>();
   brands: { name: string; productsNum: number }[] = [];
   priceRange: { min: number; max: number } = { min: 0, max: 0 };
-  selectedFilters: {
-    brands: string[];
-    categories: string[];
-    rate: {
-      value: number;
-      highValue: number;
-    };
-    price: { min: number; max: number };
-  } = {
+  selectedFilters: SelectedFilter = {
     brands: [],
     categories: [],
     rate: { value: 0, highValue: 5 },
@@ -67,6 +61,7 @@ export class FilterComponent {
         Math.max(...this.products.map((product) => product.price))
       ),
     };
+    this.selectedFilters.price = this.priceRange;
   }
 
   onToggleBrand({
@@ -76,15 +71,18 @@ export class FilterComponent {
     brand: string;
     isChecked: boolean;
   }): void {
+    // When check one brand => Add it to the selected list
     if (isChecked) {
       this.selectedFilters.brands.push(brand);
     } else {
+      // When uncheck one brand => Remove it from the selected list
       const brandIndex = this.selectedFilters.brands.indexOf(brand);
 
       this.selectedFilters.brands.splice(brandIndex, 1);
     }
 
-    console.log(this.selectedFilters);
+    // Apply filters
+    this.onApplyFilters.emit(this.selectedFilters);
   }
 
   onToggleCategory({
@@ -95,14 +93,17 @@ export class FilterComponent {
     isChecked: boolean;
   }): void {
     if (isChecked) {
+      // When check one category, add it to the selected filters
       this.selectedFilters.categories.push(category);
     } else {
+      // When uncheck one category, remove it from the selected filters
       const categoryIndex = this.selectedFilters.categories.indexOf(category);
 
       this.selectedFilters.categories.splice(categoryIndex, 1);
     }
 
-    console.log(this.selectedFilters);
+    // Apply filters
+    this.onApplyFilters.emit(this.selectedFilters);
   }
 
   onChangeRate({
@@ -112,17 +113,21 @@ export class FilterComponent {
     value: number;
     highValue: number;
   }): void {
+    // Add current rate to selected filters
     this.selectedFilters.rate = {
       value,
       highValue,
     };
 
-    console.log(this.selectedFilters);
+    // Apply filters
+    this.onApplyFilters.emit(this.selectedFilters);
   }
 
   onChangePrice({ min, max }: { min: number; max: number }): void {
+    // Add current price to selected filters
     this.selectedFilters.price = { min, max };
 
-    console.log(this.selectedFilters);
+    // Apply filters
+    this.onApplyFilters.emit(this.selectedFilters);
   }
 }

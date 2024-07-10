@@ -18,7 +18,7 @@ export class CategoryFilterComponent {
 
   ngOnInit(): void {
     this.categoriesService.getCategories().subscribe({
-      next: (data) => (this.categories = data.slice(0, 10)),
+      next: (data) => (this.categories = data),
       error: (err) => console.log(err),
     });
   }
