@@ -9,5 +9,12 @@ import { LoadingService } from '../loading.service';
   styleUrl: './loading.component.scss',
 })
 export class LoadingComponent {
-  loadingService = inject(LoadingService);
+  private loadingService = inject(LoadingService);
+  loading: boolean = false;
+
+  ngOnInit() {
+    this.loadingService.looding$.subscribe({
+      next: (val) => (this.loading = val),
+    });
+  }
 }
