@@ -5,23 +5,25 @@
     <label for="min-price" class="price-filter__range__label">From</label>
     <input
       type="number"
-      placeholder="{{ range.min.toFixed() }}"
       name="min_price"
       id="min-price"
       class="price-filter__range__input"
       min="{{ range.min }}"
       max="{{ range.max }}"
+      value="{{ minPrice }}"
+      (change)="onChangeMinPrice($event)"
     />
 
     <label for="max-price" class="price-filter__range__label">To</label>
     <input
       type="number"
-      placeholder="{{ range.max.toFixed() }}"
       name="max_price"
       id="max-price"
       class="price-filter__range__input"
       min="{{ range.min }}"
       max="{{ range.max }}"
+      value="{{ maxPrice }}"
+      (change)="onChangeMaxPrice($event)"
     />
   </div>
 </div>

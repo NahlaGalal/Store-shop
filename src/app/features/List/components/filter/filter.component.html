@@ -3,7 +3,10 @@
   and to be usable if there are another filters
 -->
 
-<app-category-filter />
-<app-brand-filter [brands]="brands" />
-<app-price-filter [range]="priceRange" />
-<app-rate-filter />
+<app-category-filter (onToggleCategory)="onToggleCategory($event)" />
+<app-brand-filter [brands]="brands" (onToggleBrand)="onToggleBrand($event)" />
+<app-price-filter
+  [range]="priceRange"
+  (onChangePrice)="onChangePrice($event)"
+/>
+<app-rate-filter (onChangeRate)="onChangeRate($event)" />

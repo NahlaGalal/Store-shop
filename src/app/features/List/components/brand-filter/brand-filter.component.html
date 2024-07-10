@@ -5,7 +5,13 @@
     @for (brand of brands; track brand.name) {
     <li class="brand-filter__list__item">
       <label for="{{ brand.name }}" class="brand-filter__list__item__label">
-        <input type="checkbox" id="{{ brand.name }}" name="brand" hidden />
+        <input
+          type="checkbox"
+          id="{{ brand.name }}"
+          name="brand"
+          hidden
+          (change)="onToggleBrand($event, brand.name)"
+        />
         <span class="brand-filter__list__item__label__input"></span>
         {{ brand.name }}
         <span class="brand-filter__list__item__label__num">{{

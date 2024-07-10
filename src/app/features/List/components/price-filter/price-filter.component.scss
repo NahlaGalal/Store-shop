@@ -19,7 +19,7 @@
       line-height: 1.25rem; // 20px
       font-weight: 600;
       color: $grey-color-500;
-    } 
+    }
 
     &__input {
       width: 5.5rem; // 88px
@@ -29,11 +29,21 @@
       border-radius: 0.5rem; // 8px
       padding: 0.5rem 0.75rem; // 8px 12px
       border: 1px solid $grey-color-400;
-      box-shadow: 0px 1px 2px 0px #1018280D;
+      box-shadow: 0px 1px 2px 0px #1018280d;
       font-size: 1rem; // 16px
       line-height: 1.5rem; // 24px
       font-weight: 400;
       color: $grey-color-600;
+      appearance: textfield;
+      /* Firefox */
+      -moz-appearance: textfield;
+
+      /* Chrome, Safari, Edge, Opera */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
   }
 }

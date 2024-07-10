@@ -14,7 +14,12 @@
     border-inline-start: 1px solid $grey-color-300;
 
     &__item {
-      &__btn {
+      &__input:checked + &__label {
+        background-color: $grey-color-300;
+      }
+
+      &__label {
+        display: block;
         background-color: transparent;
         font-size: 1rem; // 16px
         line-height: 2.75rem; // 44px
@@ -24,10 +29,7 @@
         width: 100%;
         text-align: start;
         cursor: pointer;
-
-        &--active {
-          font-weight: 600;
-        }
+        transition: all 0.3 ease-in-out;
 
         &:hover {
           background-color: $grey-color-300;
