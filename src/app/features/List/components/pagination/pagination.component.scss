@@ -2,12 +2,12 @@
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   width: max-content;
   margin: 2rem auto; // 32px auto
-  border-radius: 0.5rem; // 8px
-  border: 1px solid $grey-color-400;
   box-shadow: 0px 1px 2px 0px #1018280d;
   list-style: none;
+  max-width: 100%;
 
   &__item {
     display: flex;
@@ -18,12 +18,18 @@
     font-weight: 600;
     color: $grey-color-800;
     background-color: transparent;
-    border-inline-end: 1px solid $grey-color-400;
+    border: 1px solid $grey-color-400;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-
+    
     &--next {
-      border: 0;
+      border-start-end-radius: 0.5rem; // 8px
+      border-end-end-radius: 0.5rem; // 8px
+    }
+    
+    &--prev {
+      border-start-start-radius: 0.5rem; // 8px
+      border-end-start-radius: 0.5rem; // 8px
     }
 
     &--active,

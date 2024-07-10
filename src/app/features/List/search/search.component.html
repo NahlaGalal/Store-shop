@@ -1,14 +1,28 @@
 <app-breadcrumb [items]="[searchHandle]" />
 
 <div class="layout container">
-  <aside class="layout__aside">
+  <aside
+    class="layout__aside  {{ isFiltersVisible && 'layout__aside--shown' }}"
+  >
     <app-filter
       [products]="products"
       (onApplyFilters)="onApplyFilters($event)"
     />
+
+    <button
+      class="layout__aside__close"
+      (click)="toggleFiltersOverlay(false)"
+      type="button"
+    >
+      x
+    </button>
   </aside>
 
   <div class="layout__main">
+    <button (click)="toggleFiltersOverlay(true)" class="layout__main__btn" type="button">
+      Open Filters
+    </button>
+
     <p class="layout__main__results">
       {{ total }} results for
       <span class="layout__main__results__category">"{{ searchHandle }}"</span>
@@ -35,4 +49,3 @@
     }
   </div>
 </div>
-

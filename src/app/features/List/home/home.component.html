@@ -1,12 +1,27 @@
 <div class="layout container">
-  <aside class="layout__aside">
+  <aside class="layout__aside {{ isFiltersVisible && 'layout__aside--shown' }}">
     <app-filter
       [products]="products"
       (onApplyFilters)="onApplyFilters($event)"
     />
+    <button
+      class="layout__aside__close"
+      (click)="toggleFiltersOverlay(false)"
+      type="button"
+    >
+      x
+    </button>
   </aside>
 
   <div class="layout__main">
+    <button
+      (click)="toggleFiltersOverlay(true)"
+      class="layout__main__btn"
+      type="button"
+    >
+      Open Filters
+    </button>
+
     <main class="layout__main__content">
       @if (filteredProducts.length) { @for (product of filteredProducts; track
       product.id) {
@@ -14,7 +29,9 @@
         <app-product-card [product]="product" />
       </section>
       } } @else {
-      <p class="layout__main__content__empty">There are no products matching your filters</p>
+      <p class="layout__main__content__empty">
+        There are no products matching your filters
+      </p>
       }
     </main>
 

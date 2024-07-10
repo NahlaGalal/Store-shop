@@ -30,6 +30,7 @@ export class SearchComponent {
   filteredProducts: ProductListItem[] = [];
   total: number = 0;
   searchHandle: string = '';
+  isFiltersVisible: boolean = false;
 
   getData(page?: number): void {
     const skip = page ? (page - 1) * 20 : 0;
@@ -95,5 +96,9 @@ export class SearchComponent {
 
       return isTrue;
     });
+  }
+
+  toggleFiltersOverlay(val: boolean) {
+    this.isFiltersVisible = val;
   }
 }
