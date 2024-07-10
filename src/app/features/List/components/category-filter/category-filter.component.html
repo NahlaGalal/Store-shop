@@ -2,14 +2,14 @@
   <h2 class="category-filter__heading">Category</h2>
 
   <ul class="category-filter__list">
-    @for (category of categories; track category.slug) {
+    @for (category of filteredCategories; track category.slug) {
     <li class="category-filter__list__item">
       <input
         type="checkbox"
         name="category"
         id="{{ category.slug }}"
         hidden
-        (change)="onToggleCategory($event, category.name)"
+        (change)="onToggleCategory($event, category.slug)"
         class="category-filter__list__item__input"
       />
       <label for="{{ category.slug }}" class="category-filter__list__item__label">

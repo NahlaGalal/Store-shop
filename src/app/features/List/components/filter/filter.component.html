@@ -3,9 +3,10 @@
   and to be usable if there are another filters
 -->
 
-@if (!hideCategories) {
-<app-category-filter (onToggleCategory)="onToggleCategory($event)" />
-}
+<app-category-filter
+  [categories]="categories"
+  (onToggleCategory)="onToggleCategory($event)"
+/>
 <app-brand-filter [brands]="brands" (onToggleBrand)="onToggleBrand($event)" />
 <app-price-filter
   [range]="priceRange"

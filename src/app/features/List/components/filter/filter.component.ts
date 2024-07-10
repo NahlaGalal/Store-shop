@@ -20,9 +20,9 @@ import { SelectedFilter } from '@/app/shared/selected-filter';
 })
 export class FilterComponent {
   @Input() products: ProductListItem[] = [];
-  @Input() hideCategories?: boolean = false;
   onApplyFilters = output<SelectedFilter>();
   brands: { name: string; productsNum: number }[] = [];
+  categories: string[] = [];
   priceRange: { min: number; max: number } = { min: 0, max: 0 };
   selectedFilters: SelectedFilter = {
     brands: [],
@@ -34,9 +34,13 @@ export class FilterComponent {
   ngOnChanges(): void {
     // Reset brands array
     this.brands = [];
+    // Reset categories array
+    this.categories = [];
 
-    // Extract brands from the products list
+    const categoriesSet = new Set<string>();
+
     this.products.forEach((product) => {
+      // Extract brands from the products list
       const isBrandExist = this.brands.findIndex(
         (brand) => brand.name === (product.brand || 'General')
       );
@@ -51,7 +55,12 @@ export class FilterComponent {
           productsNum: this.brands[isBrandExist].productsNum + 1,
         };
       }
+
+      // Extract categories from the products list
+      categoriesSet.add(product.category);
     });
+
+    this.categories = Array.from(categoriesSet);
 
     // Extract price range from the products
     this.priceRange = {

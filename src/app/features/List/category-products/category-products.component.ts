@@ -93,13 +93,8 @@ export class CategoryProductsComponent {
 
       // Check for categories only if one category or more are selected
       if (selectedFilters.categories.length) {
-        // Capitalize first letter of product category
-        const category = product.category
-          .charAt(0)
-          .toUpperCase()
-          .concat(product.category.slice(1));
-
-        isTrue = isTrue && selectedFilters.categories.includes(category);
+        isTrue =
+          isTrue && selectedFilters.categories.includes(product.category);
       }
 
       return isTrue;
