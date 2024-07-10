@@ -19,12 +19,13 @@
     border: 1px solid $grey-color-400;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    
+    line-height: 1.25rem;
+
     &--next {
       border-start-end-radius: 0.5rem; // 8px
       border-end-end-radius: 0.5rem; // 8px
     }
-    
+
     &--prev {
       border-start-start-radius: 0.5rem; // 8px
       border-end-start-radius: 0.5rem; // 8px
