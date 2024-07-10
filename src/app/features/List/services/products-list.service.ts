@@ -39,6 +39,6 @@ export class ProductsListService {
       limit: number;
       skip: number;
       total: number;
-    }>(`https://dummyjson.com${apiURL}/?${queryString}`);
+    }>(`https://dummyjson.com${apiURL}?${queryString}`);
   }
 }

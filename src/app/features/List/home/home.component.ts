@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IState } from '@/app/store/reducers/filterProducts.reducer';
 import { resetFilters, setProducts } from '@/app/store/actions/filterProducts.actions';
+import { CacheService } from '@/app/shared/services/cache.service';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,10 @@ export class HomeComponent {
   total: number = 0;
   isFiltersVisible: boolean = false;
 
-  constructor(private store: Store<{ list: IState }>) {
+  constructor(
+    private store: Store<{ list: IState }>,
+    private cacheService: CacheService
+  ) {
     store.select('list').subscribe({
       next: (val) => {
         this.filteredProducts = val.filteredProducts;
@@ -43,20 +47,33 @@ export class HomeComponent {
     this.store.dispatch(resetFilters());
 
     const skip = page ? (page - 1) * 20 : 0;
+    const cachedData: {
+      products: ProductListItem[];
+      limit: number;
+      skip: number;
+      total: number;
+    } | null = this.cacheService.get(`home-${page}`);
 
-    this.loadingService.loadingOn();
+    // Get data from the api if no cache
+    if (!cachedData) {
+      this.loadingService.loadingOn();
 
-    this.productListService.getProducts({ skip }).subscribe({
-      next: (data) => {
-        this.store.dispatch(setProducts({ products: data.products }));
-        this.total = data.total;
-      },
-      error: () => {
-        this.loadingService.loadingOff();
-        this.router.navigate(['/error-default'], { replaceUrl: true });
-      },
-      complete: () => this.loadingService.loadingOff(),
-    });
+      this.productListService.getProducts({ skip }).subscribe({
+        next: (data) => {
+          this.cacheService.set(`home-${page}`, data);
+          this.store.dispatch(setProducts({ products: data.products }));
+          this.total = data.total;
+        },
+        error: () => {
+          this.loadingService.loadingOff();
+          this.router.navigate(['/error-default'], { replaceUrl: true });
+        },
+        complete: () => this.loadingService.loadingOff(),
+      });
+    } else {
+      this.store.dispatch(setProducts({ products: cachedData.products }));
+      this.total = cachedData.total;
+    }
   }
 
   ngOnInit(): void {

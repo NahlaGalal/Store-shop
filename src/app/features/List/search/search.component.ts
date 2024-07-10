@@ -7,9 +7,13 @@ import { PaginationComponent } from '../components/pagination/pagination.compone
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BreadcrumbComponent } from '@/app/shared/breadcrumb/breadcrumb.component';
 import { ProductListItem } from '../interfaces/product-list-item';
-import { resetFilters, setProducts } from '@/app/store/actions/filterProducts.actions';
+import {
+  resetFilters,
+  setProducts,
+} from '@/app/store/actions/filterProducts.actions';
 import { Store } from '@ngrx/store';
 import { IState } from '@/app/store/reducers/filterProducts.reducer';
+import { CacheService } from '@/app/shared/services/cache.service';
 
 @Component({
   selector: 'app-search',
@@ -33,7 +37,10 @@ export class SearchComponent {
   searchHandle: string = '';
   isFiltersVisible: boolean = false;
 
-  constructor(private store: Store<{ list: IState }>) {
+  constructor(
+    private store: Store<{ list: IState }>,
+    private cacheService: CacheService
+  ) {
     store.select('list').subscribe({
       next: (val) => {
         this.filteredProducts = val.filteredProducts;
@@ -45,22 +52,35 @@ export class SearchComponent {
     this.store.dispatch(resetFilters());
 
     const skip = page ? (page - 1) * 20 : 0;
+    const cachedData: {
+      products: ProductListItem[];
+      limit: number;
+      skip: number;
+      total: number;
+    } | null = this.cacheService.get(`search-${this.searchHandle}-${page}`);
 
-    this.loadingService.loadingOn();
+    // Get data from the api if no cache
+    if (!cachedData) {
+      this.loadingService.loadingOn();
 
-    this.productListService
-      .getProducts({ skip, search: this.searchHandle })
-      .subscribe({
-        next: (data) => {
-          this.store.dispatch(setProducts({ products: data.products }));
-          this.total = data.total;
-        },
-        error: () => {
-          this.loadingService.loadingOff();
-          this.router.navigate(['/error-default'], { replaceUrl: true });
-        },
-        complete: () => this.loadingService.loadingOff(),
-      });
+      this.productListService
+        .getProducts({ skip, search: this.searchHandle })
+        .subscribe({
+          next: (data) => {
+            this.cacheService.set(`search-${this.searchHandle}-${page}`, data);
+            this.store.dispatch(setProducts({ products: data.products }));
+            this.total = data.total;
+          },
+          error: () => {
+            this.loadingService.loadingOff();
+            this.router.navigate(['/error-default'], { replaceUrl: true });
+          },
+          complete: () => this.loadingService.loadingOff(),
+        });
+    } else {
+      this.store.dispatch(setProducts({ products: cachedData.products }));
+      this.total = cachedData.total;
+    }
   }
 
   ngOnInit(): void {
