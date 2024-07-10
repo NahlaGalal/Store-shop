@@ -7,7 +7,7 @@ import {
 } from '@ng-icons/bootstrap-icons';
 import { CartDropDownComponent } from '../cart-drop-down/cart-drop-down.component';
 import { CartService } from '@/app/shared/cart.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +21,7 @@ import { RouterLink } from '@angular/router';
 })
 export class NavbarComponent {
   private cartService = inject(CartService);
+  private router = inject(Router);
   isCartDropDownVisible: boolean = false;
 
   ngOnInit(): void {
@@ -34,5 +35,11 @@ export class NavbarComponent {
   toggleCartDropDown(event: Event): void {
     event.stopPropagation();
     this.cartService.toggleCartDropDown(!this.isCartDropDownVisible);
+  }
+
+  onSearchHandler(event: Event): void {
+    const searchValue = (event.currentTarget as HTMLInputElement).value;
+
+    this.router.navigate([`/search/${searchValue}`]);
   }
 }

@@ -9,26 +9,30 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: "Home - Convertedin Store shop",
+    title: 'Home - Convertedin Store shop',
   },
   {
     path: 'search/:handle',
     component: SearchComponent,
-    title: "Search - Convertedin Store shop",
+    title: 'Search - Convertedin Store shop',
+  },
+  {
+    path: 'search',
+    redirectTo: '/',
   },
   {
     path: 'categories/:slug',
     component: CategoryProductsComponent,
-    title: "Categories - Convertedin Store shop",
+    title: 'Categories - Convertedin Store shop',
   },
   {
     path: 'product/:id',
     component: ProductComponent,
-    title: "Product - Convertedin Store shop",
+    title: 'Product - Convertedin Store shop',
   },
   {
     path: '**',
     component: NotFoundComponent,
-    title: "Not found - Convertedin Store shop",
+    title: 'Not found - Convertedin Store shop',
   },
 ];

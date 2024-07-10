@@ -20,6 +20,8 @@
       placeholder="search for product"
       class="navbar__search__input"
       autocomplete="off"
+      (keydown.enter)="onSearchHandler($event)"
+      (blur)="onSearchHandler($event)"
     />
   </div>
 
