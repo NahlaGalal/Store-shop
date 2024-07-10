@@ -2,6 +2,8 @@ import { Component, inject, Input, output } from '@angular/core';
 import { Category } from '@/app/shared/interfaces/category';
 import { CategoriesService } from '@/app/shared/services/categories.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { toggleCategroies } from '@/app/store/actions/filterProducts.actions';
 
 @Component({
   selector: 'app-category-filter',
@@ -17,9 +19,8 @@ export class CategoryFilterComponent {
   private router = inject(Router);
   filteredCategories: Category[] = [];
   allCategories: Category[] = [];
-  onToggleCategoryEmit = output<{ category: string; isChecked: boolean }>({
-    alias: 'onToggleCategory',
-  });
+
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.categoriesService.getCategories().subscribe({
@@ -41,9 +42,11 @@ export class CategoryFilterComponent {
   }
 
   onToggleCategory(event: Event, name: string): void {
-    this.onToggleCategoryEmit.emit({
-      category: name,
-      isChecked: (event.currentTarget as HTMLInputElement).checked,
-    });
+    this.store.dispatch(
+      toggleCategroies({
+        category: name,
+        isChecked: (event.currentTarget as HTMLInputElement).checked,
+      })
+    );
   }
 }

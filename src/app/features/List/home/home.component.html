@@ -1,9 +1,6 @@
 <div class="layout container">
   <aside class="layout__aside {{ isFiltersVisible && 'layout__aside--shown' }}">
-    <app-filter
-      [products]="products"
-      (onApplyFilters)="onApplyFilters($event)"
-    />
+    <app-filter />
     <button
       class="layout__aside__close"
       (click)="toggleFiltersOverlay(false)"

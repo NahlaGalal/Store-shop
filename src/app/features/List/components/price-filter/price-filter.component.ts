@@ -1,5 +1,7 @@
+import { changePriceRange } from '@/app/store/actions/filterProducts.actions';
 import { Component, Input, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-price-filter',
@@ -10,11 +12,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class PriceFilterComponent {
   @Input() range: { min: number; max: number } = { min: 0, max: 0 };
-  onChangePriceEmit = output<{ min: number; max: number }>({
-    alias: 'onChangePrice',
-  });
   minPrice: number = 0;
   maxPrice: number = 0;
+
+  constructor(private store: Store) {}
 
   ngOnChanges() {
     this.minPrice = this.range.min;
@@ -31,13 +32,15 @@ export class PriceFilterComponent {
     } else {
       this.minPrice = value;
     }
-    
-    this.onChangePriceEmit.emit({ min: this.minPrice, max: this.maxPrice });
+
+    this.store.dispatch(
+      changePriceRange({ min: this.minPrice, max: this.maxPrice })
+    );
   }
-  
+
   onChangeMaxPrice(event: Event) {
     const value = +(event.currentTarget as HTMLInputElement).value;
-    
+
     // Check that max price can't be lower than min price
     if (value <= this.minPrice) {
       (event.currentTarget as HTMLInputElement).value = `${this.minPrice + 1}`;
@@ -46,6 +49,8 @@ export class PriceFilterComponent {
       this.maxPrice = value;
     }
 
-    this.onChangePriceEmit.emit({ min: this.minPrice, max: this.maxPrice });
+    this.store.dispatch(
+      changePriceRange({ min: this.minPrice, max: this.maxPrice })
+    ) ;
   }
 }

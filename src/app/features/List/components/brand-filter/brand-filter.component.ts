@@ -1,4 +1,6 @@
-import { Component, Input, output } from '@angular/core';
+import { toggleBrands } from '@/app/store/actions/filterProducts.actions';
+import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-brand-filter',
@@ -9,14 +11,15 @@ import { Component, Input, output } from '@angular/core';
 })
 export class BrandFilterComponent {
   @Input() brands: { name: string; productsNum: number }[] = [];
-  onToggleBrandEmit = output<{ brand: string; isChecked: boolean }>({
-    alias: 'onToggleBrand',
-  });
+
+  constructor(private store: Store) {}
 
   onToggleBrand(event: Event, name: string): void {
-    this.onToggleBrandEmit.emit({
-      brand: name,
-      isChecked: (event.currentTarget as HTMLInputElement).checked,
-    });
+    this.store.dispatch(
+      toggleBrands({
+        brand: name,
+        isChecked: (event.currentTarget as HTMLInputElement).checked,
+      })
+    );
   }
 }

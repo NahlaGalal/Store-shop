@@ -1,5 +1,7 @@
 import { Component, output } from '@angular/core';
 import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
+import { Store } from '@ngrx/store';
+import { changeRateRange } from '@/app/store/actions/filterProducts.actions';
 
 @Component({
   selector: 'app-rate-filter',
@@ -17,9 +19,8 @@ export class RateFilterComponent {
     combineLabels: (min) => min,
     autoHideLimitLabels: false,
   };
-  onChangeRateEmit = output<{ value: number; highValue: number }>({
-    alias: 'onChangeRate',
-  });
+
+  constructor(private store: Store) {}
 
   onChangeRate({
     value,
@@ -29,6 +30,6 @@ export class RateFilterComponent {
     highValue?: number;
     pointerType: 0 | 1;
   }): void {
-    this.onChangeRateEmit.emit({ value, highValue: highValue || 5 });
+    this.store.dispatch(changeRateRange({ value, highValue: highValue || 5 }));
   }
 }

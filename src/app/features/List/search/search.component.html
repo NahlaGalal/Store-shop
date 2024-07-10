@@ -4,10 +4,7 @@
   <aside
     class="layout__aside  {{ isFiltersVisible && 'layout__aside--shown' }}"
   >
-    <app-filter
-      [products]="products"
-      (onApplyFilters)="onApplyFilters($event)"
-    />
+    <app-filter />
 
     <button
       class="layout__aside__close"
@@ -19,7 +16,11 @@
   </aside>
 
   <div class="layout__main">
-    <button (click)="toggleFiltersOverlay(true)" class="layout__main__btn" type="button">
+    <button
+      (click)="toggleFiltersOverlay(true)"
+      class="layout__main__btn"
+      type="button"
+    >
       Open Filters
     </button>
 

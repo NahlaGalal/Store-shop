@@ -1,10 +1,12 @@
-import { Component, Input, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CategoryFilterComponent } from '../category-filter/category-filter.component';
 import { BrandFilterComponent } from '../brand-filter/brand-filter.component';
 import { PriceFilterComponent } from '../price-filter/price-filter.component';
 import { RateFilterComponent } from '../rate-filter/rate-filter.component';
 import { ProductListItem } from '../../interfaces/product-list-item';
-import { SelectedFilter } from '../../interfaces/selected-filter';
+import { Store } from '@ngrx/store';
+import { changePriceRange } from '@/app/store/actions/filterProducts.actions';
+import { IState } from '@/app/store/reducers/filterProducts.reducer';
 
 @Component({
   selector: 'app-filter',
@@ -19,19 +21,21 @@ import { SelectedFilter } from '../../interfaces/selected-filter';
   styleUrl: './filter.component.scss',
 })
 export class FilterComponent {
-  @Input() products: ProductListItem[] = [];
-  onApplyFilters = output<SelectedFilter>();
   brands: { name: string; productsNum: number }[] = [];
   categories: string[] = [];
   priceRange: { min: number; max: number } = { min: 0, max: 0 };
-  selectedFilters: SelectedFilter = {
-    brands: [],
-    categories: [],
-    rate: { value: 0, highValue: 5 },
-    price: this.priceRange,
-  };
 
-  ngOnChanges(): void {
+  constructor(private store: Store<{ list: IState }>) {
+    store
+      .select((val) => val.list.products)
+      .subscribe({
+        next: (products) => {
+          this.setFilterKeys(products);
+        },
+      });
+  }
+
+  setFilterKeys(products: ProductListItem[]): void {
     // Reset brands array
     this.brands = [];
     // Reset categories array
@@ -39,7 +43,7 @@ export class FilterComponent {
 
     const categoriesSet = new Set<string>();
 
-    this.products.forEach((product) => {
+    products.forEach((product) => {
       // Extract brands from the products list
       const isBrandExist = this.brands.findIndex(
         (brand) => brand.name === (product.brand || 'General')
@@ -63,81 +67,15 @@ export class FilterComponent {
     this.categories = Array.from(categoriesSet);
 
     // Extract price range from the products
-    this.priceRange = {
-      min: Math.floor(
-        Math.min(...this.products.map((product) => product.price))
-      ),
-      max: Math.ceil(
-        Math.max(...this.products.map((product) => product.price))
-      ),
-    };
-    this.selectedFilters.price = this.priceRange;
-  }
-
-  onToggleBrand({
-    brand,
-    isChecked,
-  }: {
-    brand: string;
-    isChecked: boolean;
-  }): void {
-    // When check one brand => Add it to the selected list
-    if (isChecked) {
-      this.selectedFilters.brands.push(brand);
+    if (products.length) {
+      this.priceRange = {
+        min: Math.floor(Math.min(...products.map((product) => product.price))),
+        max: Math.ceil(Math.max(...products.map((product) => product.price))),
+      };
     } else {
-      // When uncheck one brand => Remove it from the selected list
-      const brandIndex = this.selectedFilters.brands.indexOf(brand);
-
-      this.selectedFilters.brands.splice(brandIndex, 1);
+      this.priceRange = { min: 0, max: 0 };
     }
 
-    // Apply filters
-    this.onApplyFilters.emit(this.selectedFilters);
-  }
-
-  onToggleCategory({
-    category,
-    isChecked,
-  }: {
-    category: string;
-    isChecked: boolean;
-  }): void {
-    if (isChecked) {
-      // When check one category, add it to the selected filters
-      this.selectedFilters.categories.push(category);
-    } else {
-      // When uncheck one category, remove it from the selected filters
-      const categoryIndex = this.selectedFilters.categories.indexOf(category);
-
-      this.selectedFilters.categories.splice(categoryIndex, 1);
-    }
-
-    // Apply filters
-    this.onApplyFilters.emit(this.selectedFilters);
-  }
-
-  onChangeRate({
-    value,
-    highValue,
-  }: {
-    value: number;
-    highValue: number;
-  }): void {
-    // Add current rate to selected filters
-    this.selectedFilters.rate = {
-      value,
-      highValue,
-    };
-
-    // Apply filters
-    this.onApplyFilters.emit(this.selectedFilters);
-  }
-
-  onChangePrice({ min, max }: { min: number; max: number }): void {
-    // Add current price to selected filters
-    this.selectedFilters.price = { min, max };
-
-    // Apply filters
-    this.onApplyFilters.emit(this.selectedFilters);
+    this.store.dispatch(changePriceRange(this.priceRange));
   }
 }
