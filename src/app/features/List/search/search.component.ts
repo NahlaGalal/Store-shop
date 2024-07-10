@@ -4,7 +4,7 @@ import { ProductCardComponent } from '../components/product-card/product-card.co
 import { ProductsListService } from '../services/products-list.service';
 import { LoadingService } from '@/app/core/loading.service';
 import { PaginationComponent } from '../components/pagination/pagination.component';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BreadcrumbComponent } from '@/app/shared/breadcrumb/breadcrumb.component';
 import { ProductListItem } from '../interfaces/product-list-item';
 import { SelectedFilter } from '../interfaces/selected-filter';
@@ -25,6 +25,7 @@ export class SearchComponent {
   private productListService = inject(ProductsListService);
   private loadingService = inject(LoadingService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   products: ProductListItem[] = [];
   filteredProducts: ProductListItem[] = [];
   total: number = 0;
@@ -43,9 +44,9 @@ export class SearchComponent {
           this.filteredProducts = data.products;
           this.total = data.total;
         },
-        error: (err) => {
-          console.log(err);
+        error: () => {
           this.loadingService.loadingOff();
+          this.router.navigate(['/error-default'], { replaceUrl: true });
         },
         complete: () => this.loadingService.loadingOff(),
       });

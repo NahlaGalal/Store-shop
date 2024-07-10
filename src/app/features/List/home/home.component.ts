@@ -7,6 +7,7 @@ import { PaginationComponent } from '../components/pagination/pagination.compone
 import { LoadingService } from '@/app/core/loading.service';
 import { ProductListItem } from '../interfaces/product-list-item';
 import { SelectedFilter } from '../interfaces/selected-filter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ import { SelectedFilter } from '../interfaces/selected-filter';
 export class HomeComponent {
   private productListService = inject(ProductsListService);
   private loadingService = inject(LoadingService);
+  private router = inject(Router);
   products: ProductListItem[] = [];
   filteredProducts: ProductListItem[] = [];
   total: number = 0;
@@ -38,9 +40,9 @@ export class HomeComponent {
         this.filteredProducts = data.products;
         this.total = data.total;
       },
-      error: (err) => {
-        console.log(err);
+      error: () => {
         this.loadingService.loadingOff();
+        this.router.navigate(['/error-default'], { replaceUrl: true });
       },
       complete: () => this.loadingService.loadingOff(),
     });

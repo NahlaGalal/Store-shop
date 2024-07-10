@@ -48,9 +48,9 @@ export class CategoryProductsComponent {
           this.filteredProducts = data.products;
           this.total = data.total;
         },
-        error: (err) => {
-          console.log(err);
+        error: () => {
           this.loadingService.loadingOff();
+          this.router.navigate(['/error-default'], { replaceUrl: true });
         },
         complete: () => this.loadingService.loadingOff(),
       });

@@ -1,6 +1,7 @@
 import { Component, inject, Input, output } from '@angular/core';
 import { Category } from '@/app/shared/interfaces/category';
 import { CategoriesService } from '@/app/shared/services/categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-filter',
@@ -13,6 +14,7 @@ export class CategoryFilterComponent {
   @Input() categories: string[] = [];
 
   private categoriesService = inject(CategoriesService);
+  private router = inject(Router);
   filteredCategories: Category[] = [];
   allCategories: Category[] = [];
   onToggleCategoryEmit = output<{ category: string; isChecked: boolean }>({
@@ -27,10 +29,11 @@ export class CategoryFilterComponent {
           this.categories.includes(category.slug)
         );
       },
-      error: (err) => console.log(err),
+      error: () =>
+        this.router.navigate(['error-default'], { replaceUrl: true }),
     });
   }
-  
+
   ngOnChanges(): void {
     this.filteredCategories = this.allCategories.filter((category) =>
       this.categories.includes(category.slug)
