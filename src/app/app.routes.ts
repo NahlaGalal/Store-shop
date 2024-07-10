@@ -17,7 +17,7 @@ export const routes: Routes = [
     title: "Search - Convertedin Store shop",
   },
   {
-    path: 'categories/:handle',
+    path: 'categories/:slug',
     component: CategoryProductsComponent,
     title: "Categories - Convertedin Store shop",
   },

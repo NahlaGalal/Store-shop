@@ -20,6 +20,7 @@ import { SelectedFilter } from '@/app/shared/selected-filter';
 })
 export class FilterComponent {
   @Input() products: ProductListItem[] = [];
+  @Input() hideCategories?: boolean = false;
   onApplyFilters = output<SelectedFilter>();
   brands: { name: string; productsNum: number }[] = [];
   priceRange: { min: number; max: number } = { min: 0, max: 0 };

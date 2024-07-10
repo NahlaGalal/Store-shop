@@ -1,20 +1,38 @@
-<app-breadcrumb />
+<app-breadcrumb [items]="[category]" />
 
 <div class="layout container">
   <aside class="layout__aside">
-    <app-filter [products]="products" />
+    <app-filter
+      [products]="products"
+      (onApplyFilters)="onApplyFilters($event)"
+      [hideCategories]="true"
+    />
   </aside>
 
   <div class="layout__main">
+    <p class="layout__main__results">
+      {{ total }} results for
+      <span class="layout__main__results__category">"{{ category }}"</span>
+    </p>
+
     <main class="layout__main__content">
-      @for (product of products; track product.id) {
-      <app-product-card [product]="product" />
+      @if (filteredProducts.length) { @for (product of filteredProducts; track
+      product.id) {
+      <section>
+        <app-product-card [product]="product" />
+      </section>
+      } } @else {
+      <p class="layout__main__content__empty">
+        There are no products matching your filters
+      </p>
       }
     </main>
 
+    @if (total > 20) {
     <app-pagination
       [total]="total"
       (onChangePageHandler)="onChangePageHandler($event)"
     />
+    }
   </div>
 </div>
