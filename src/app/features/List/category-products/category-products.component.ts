@@ -3,11 +3,11 @@ import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.compo
 import { ProductCardComponent } from '../components/product-card/product-card.component';
 import { FilterComponent } from '../components/filter/filter.component';
 import { ProductsListService } from '../services/products-list.service';
-import { ProductListItem } from '@/app/shared/product-list-item';
 import { PaginationComponent } from '../components/pagination/pagination.component';
 import { LoadingService } from '@/app/core/loading.service';
-import { SelectedFilter } from '@/app/shared/selected-filter';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ProductListItem } from '../interfaces/product-list-item';
+import { SelectedFilter } from '../interfaces/selected-filter';
 
 @Component({
   selector: 'app-category-products',

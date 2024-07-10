@@ -6,7 +6,7 @@ import {
   bootstrapSearch,
 } from '@ng-icons/bootstrap-icons';
 import { CartDropDownComponent } from '../cart-drop-down/cart-drop-down.component';
-import { CartService } from '@/app/shared/cart.service';
+import { CartService } from '@/app/shared/services/cart.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({

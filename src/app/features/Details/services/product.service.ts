@@ -1,4 +1,4 @@
-import { Product } from '@/app/shared/product';
+import { Product } from '@/app/shared/interfaces/product';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

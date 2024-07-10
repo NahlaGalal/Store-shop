@@ -2,7 +2,7 @@ import { BreadcrumbComponent } from '@/app/shared/breadcrumb/breadcrumb.componen
 import { Component, inject } from '@angular/core';
 import { ProductInfoComponent } from '@/app/features/Details/components/product-info/product-info.component';
 import { ProductService } from '@/app/features/Details/services/product.service';
-import { Product } from '@/app/shared/product';
+import { Product } from '@/app/shared/interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '@/app/core/loading.service';
 

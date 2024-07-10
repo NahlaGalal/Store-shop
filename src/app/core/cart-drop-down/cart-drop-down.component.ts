@@ -1,5 +1,5 @@
-import { Cart } from '@/app/shared/cart';
-import { CartService } from '@/app/shared/cart.service';
+import { Cart } from '@/app/shared/interfaces/cart';
+import { CartService } from '@/app/shared/services/cart.service';
 import { Component, inject } from '@angular/core';
 import { bootstrapTrash2 } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';

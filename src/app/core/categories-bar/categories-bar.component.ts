@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CategoriesService } from '@/app/shared/categories.service';
-import { Category } from '@/app/shared/category';
+import { CategoriesService } from '@/app/shared/services/categories.service';
+import { Category } from '@/app/shared/interfaces/category';
 
 @Component({
   selector: 'app-categories-bar',

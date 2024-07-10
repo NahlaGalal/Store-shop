@@ -5,8 +5,8 @@ import { BreadcrumbComponent } from '@/app/shared/breadcrumb/breadcrumb.componen
 import { ProductsListService } from '../services/products-list.service';
 import { PaginationComponent } from '../components/pagination/pagination.component';
 import { LoadingService } from '@/app/core/loading.service';
-import { ProductListItem } from '@/app/shared/product-list-item';
-import { SelectedFilter } from '@/app/shared/selected-filter';
+import { ProductListItem } from '../interfaces/product-list-item';
+import { SelectedFilter } from '../interfaces/selected-filter';
 
 @Component({
   selector: 'app-home',

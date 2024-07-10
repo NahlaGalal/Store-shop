@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product';
-import { Cart } from './cart';
+import { Product } from '../interfaces/product';
+import { Cart } from '../interfaces/cart';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({

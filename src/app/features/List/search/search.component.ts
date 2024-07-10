@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FilterComponent } from '../components/filter/filter.component';
 import { ProductCardComponent } from '../components/product-card/product-card.component';
 import { ProductsListService } from '../services/products-list.service';
-import { ProductListItem } from '@/app/shared/product-list-item';
 import { LoadingService } from '@/app/core/loading.service';
 import { PaginationComponent } from '../components/pagination/pagination.component';
-import { SelectedFilter } from '@/app/shared/selected-filter';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BreadcrumbComponent } from '@/app/shared/breadcrumb/breadcrumb.component';
+import { ProductListItem } from '../interfaces/product-list-item';
+import { SelectedFilter } from '../interfaces/selected-filter';
 
 @Component({
   selector: 'app-search',

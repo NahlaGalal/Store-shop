@@ -3,8 +3,8 @@ import { CategoryFilterComponent } from '../category-filter/category-filter.comp
 import { BrandFilterComponent } from '../brand-filter/brand-filter.component';
 import { PriceFilterComponent } from '../price-filter/price-filter.component';
 import { RateFilterComponent } from '../rate-filter/rate-filter.component';
-import { ProductListItem } from '@/app/shared/product-list-item';
-import { SelectedFilter } from '@/app/shared/selected-filter';
+import { ProductListItem } from '../../interfaces/product-list-item';
+import { SelectedFilter } from '../../interfaces/selected-filter';
 
 @Component({
   selector: 'app-filter',

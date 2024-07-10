@@ -1,8 +1,8 @@
-import { ProductListItem } from '@/app/shared/product-list-item';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { bootstrapStarFill } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { ProductListItem } from '../../interfaces/product-list-item';
 
 @Component({
   selector: 'app-product-card',

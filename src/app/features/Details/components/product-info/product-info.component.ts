@@ -1,5 +1,5 @@
-import { CartService } from '@/app/shared/cart.service';
-import { Product } from '@/app/shared/product';
+import { CartService } from '@/app/shared/services/cart.service';
+import { Product } from '@/app/shared/interfaces/product';
 import { Component, inject, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { bootstrapStarFill } from '@ng-icons/bootstrap-icons';

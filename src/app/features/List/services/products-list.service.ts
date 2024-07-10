@@ -1,7 +1,7 @@
-import { ProductListItem } from '@/app/shared/product-list-item';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProductListItem } from '../interfaces/product-list-item';
 
 @Injectable({
   providedIn: 'root',

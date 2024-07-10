@@ -1,6 +1,6 @@
 import { Component, inject, Input, output } from '@angular/core';
-import { Category } from '@/app/shared/category';
-import { CategoriesService } from '@/app/shared/categories.service';
+import { Category } from '@/app/shared/interfaces/category';
+import { CategoriesService } from '@/app/shared/services/categories.service';
 
 @Component({
   selector: 'app-category-filter',

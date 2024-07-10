@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '@/app/core/navbar/navbar.component';
 import { CategoriesBarComponent } from '@/app/core/categories-bar/categories-bar.component';
 import { LoadingComponent } from '@/app/core/loading/loading.component';
-import { CartService } from './shared/cart.service';
+import { CartService } from './shared/services/cart.service';
 
 @Component({
   selector: 'app-root',
