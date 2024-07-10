@@ -9,7 +9,11 @@ import { Observable, Subject } from 'rxjs';
 export class CartService {
   private boolSubject: Subject<boolean> = new Subject<boolean>();
   isCartDropDownVisible$: Observable<boolean> = this.boolSubject.asObservable();
-  cartItems: Cart = { items: [] };
+  cartItems: Cart = (JSON.parse(
+    localStorage.getItem('cartItems') || '{"items": []}'
+  ) as Cart) || {
+    items: [],
+  };
 
   toggleCartDropDown(val: boolean): void {
     this.boolSubject.next(val);
@@ -35,6 +39,9 @@ export class CartService {
         totalPrice: item.price * quantity,
       });
     }
+
+    // Set cart items in localestorage
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
 
     this.toggleCartDropDown(true);
 
